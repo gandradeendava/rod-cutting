@@ -1,12 +1,15 @@
 import kotlin.math.max
 
 fun main(args: Array<String>) {
+    val time = System.currentTimeMillis()
+
     val n = 5
 //    val prices = listOf(1,2,5,7,9)
     val prices = randomList(n)
     println(prices)
     val res = cutRod(prices, n)
     println(res)
+    println("time: ${System.currentTimeMillis()-time} ms")
 }
 
 
