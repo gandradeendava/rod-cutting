@@ -1,0 +1,55 @@
+package knapsack;
+import java.util.Scanner;
+public class knapsack {
+	static int max(int a, int b) 
+    { 
+        if(a > b) {
+        	return a;
+        }else {
+        	return b;
+        }
+		//return (a > b)? a : b; // expresion Regular
+    }
+    static int knapSack(int pesoMaximo, int pesoIndividual[], int valorIndividual[], int numItems)
+    {
+        int i, w;
+        int [][]K = new int[numItems+1][pesoMaximo+1];
+
+        for (i = 0; i <= numItems; i++)
+        {
+            for (w = 0; w <= pesoMaximo; w++)
+            {
+                if (i==0 || w==0)
+                    K[i][w] = 0;
+                else if (pesoIndividual[i-1] <= w)
+                    K[i][w] = max(valorIndividual[i-1] + K[i-1][w-pesoIndividual[i-1]],  K[i-1][w]);
+                else
+                    K[i][w] = K[i-1][w];
+            }
+        }
+ 
+        return K[numItems][pesoMaximo];
+    }
+ 
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese el numero de items: ");
+        int numItems = sc.nextInt();
+        System.out.println("Ingrese el peso de los items: ");
+        int []pesoIndividual = new int[numItems];
+        for(int i=0; i<numItems; i++)
+            pesoIndividual[i] = sc.nextInt();
+ 
+        System.out.println("ingrese los valores individuales: ");
+        int []valorIndividual = new int[numItems];
+        for(int i=0; i<numItems; i++)
+            valorIndividual[i] = sc.nextInt();
+ 
+        System.out.println("ingrese le peso maximo: ");
+        int pesoMaximo = sc.nextInt();
+ 
+        System.out.println("El peso maximo es " + knapSack(pesoMaximo, pesoIndividual, valorIndividual, numItems));
+        sc.close();
+    }
+}
