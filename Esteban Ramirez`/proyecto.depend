@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1549299321 source:c:\users\eramirez\documents\clases\recursion\proyecto\main.cpp
+	<bits/stdc++.h>
+
+1549301152 source:c:\users\eramirez\documents\clases\recursion\rod-cutting\esteban ramirez`\main.cpp
+	<bits/stdc++.h>
+	<stdlib.h>
+	<iostream>
+
